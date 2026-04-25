@@ -78,10 +78,11 @@ padding:14px 0;
 gap:18px;
 }
 
-.logo{
+.logo-link{
 display:flex;
 align-items:center;
 gap:10px;
+text-decoration:none;
 }
 
 .logo img{
@@ -406,7 +407,7 @@ color:var(--brand);
 margin-top:3px;
 }
 
-/* WHO WE WORK WITH NEW BLOCK */
+/* WHO WE WORK WITH */
 .who-enhanced-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -421,8 +422,8 @@ border-radius:22px;
 
 .who-points{
 list-style:none;
-padding:0;
 margin:0;
+padding:0;
 }
 
 .who-points li{
@@ -514,6 +515,31 @@ font-size:13px;
 color:var(--mid);
 }
 
+/* SCROLL TOP */
+.scroll-top{
+position:fixed;
+right:22px;
+bottom:22px;
+width:48px;
+height:48px;
+border-radius:50%;
+background:var(--brand);
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-size:16px;
+box-shadow:0 12px 25px rgba(0,0,0,.16);
+z-index:999;
+transition:.25s ease;
+}
+
+.scroll-top:hover{
+transform:translateY(-4px);
+background:var(--dark);
+}
+
 /* RESPONSIVE */
 @media(max-width:1180px){
 
@@ -590,18 +616,28 @@ gap:10px;
 .who-panel{
 padding:20px;
 }
+
+.scroll-top{
+right:16px;
+bottom:16px;
+width:44px;
+height:44px;
+font-size:14px;
+}
 }
 </style>
 </head>
 
-<body>
+<body id="top">
 
 <nav>
 <div class="nav-inner">
 
 <div class="logo">
+<a href="#top" class="logo-link">
 <img src="logo.png" alt="Outreach Logo">
 <span>OUTREACH</span>
+</a>
 </div>
 
 <div class="nav-links">
@@ -629,7 +665,6 @@ padding:20px;
 </div>
 
 <div class="mobile-menu" id="mobileMenu">
-
 <div class="close-menu" onclick="closeMenu()">
 <i class="fa-solid fa-xmark"></i>
 </div>
@@ -645,16 +680,13 @@ padding:20px;
 <a href="#services">How It Works</a>
 <a href="#about">Why Manufacturers Choose Outreach</a>
 <a href="#contact">Transparency & Trust</a>
-
 </div>
 
 <div class="container">
 
 <section class="hero">
-
 <div>
 <div class="eyebrow">Global Market Access</div>
-
 <h1>Turn Your Manufacturing Capability Into <span>Global Business</span></h1>
 
 <p>
@@ -677,17 +709,14 @@ A structured market-access platform helping Indian manufacturers connect with in
 <div class="stat"><strong>ROI</strong>Focused</div>
 </div>
 </div>
-
 </section>
 
 <section id="services">
-
 <div class="secondary-grid">
 
 <div class="secondary-left">
 <div class="eyebrow">Who It’s For</div>
 <h2>Serious Manufacturers Ready To Grow</h2>
-
 <p>
 For manufacturers who make quality products and are ready to grow beyond India — but need the right market access, visibility, and guidance.
 </p>
@@ -695,22 +724,18 @@ For manufacturers who make quality products and are ready to grow beyond India �
 
 <div class="secondary-right">
 <div class="eyebrow">What We Help You Achieve</div>
-
 <ul class="service-list">
 <li><i class="fa-solid fa-globe"></i>Reach serious international buyers</li>
 <li><i class="fa-solid fa-briefcase"></i>Present your products professionally</li>
 <li><i class="fa-solid fa-chart-line"></i>Enter exports with clarity and confidence</li>
 <li><i class="fa-solid fa-handshake"></i>Build long-term international business</li>
 </ul>
-
 </div>
 
 </div>
-
 </section>
 
 <section id="about">
-
 <div class="about-title">
 <div class="eyebrow">About Outreach</div>
 <h2>Built for Manufacturers, Not Middlemen</h2>
@@ -745,11 +770,9 @@ A dedicated Outreach partner building credibility, visibility, and confidence in
 </div>
 
 </div>
-
 </section>
 
 <section id="who-work-with">
-
 <div class="about-title">
 <div class="eyebrow">Who We Work With</div>
 <h2>Outreach Is Right for You If</h2>
@@ -767,7 +790,6 @@ A dedicated Outreach partner building credibility, visibility, and confidence in
 </div>
 
 <div class="who-panel dark-industries">
-
 <div class="eyebrow">Industries We Support</div>
 
 <div class="industry-grid">
@@ -782,26 +804,18 @@ A dedicated Outreach partner building credibility, visibility, and confidence in
 </div>
 
 </div>
-
 </section>
 
 <section id="contact">
-
 <div class="cta">
-
 <h2>Ready To Scale Beyond India?</h2>
-
-<p>
-Domestic growth has limits. International growth rewards structured businesses.
-</p>
+<p>Domestic growth has limits. International growth rewards structured businesses.</p>
 
 <div class="btn-row" style="justify-content:center;">
 <a href="#" class="btn-primary">Start With Outreach</a>
 <a href="#" class="btn-secondary">Talk To Advisor</a>
 </div>
-
 </div>
-
 </section>
 
 <footer id="faq">
@@ -809,6 +823,10 @@ Domestic growth has limits. International growth rewards structured businesses.
 </footer>
 
 </div>
+
+<a href="#top" class="scroll-top" aria-label="Scroll to top">
+<i class="fa-solid fa-arrow-up"></i>
+</a>
 
 <script>
 function openMenu(){
