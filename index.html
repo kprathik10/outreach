@@ -5,7 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OUTREACH</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="shortcut icon" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<meta name="theme-color" content="#e35a1a">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -17,10 +22,8 @@
 --accent:#f59427;
 --brand:#e35a1a;
 --text:#111111;
-
 --title-font:'Montserrat',sans-serif;
---sub-font:'Montserrat',sans-serif; /* Replace with TT Fors if licensed */
---body-font:'Source Sans 3',sans-serif;
+--body-font:'Inter',sans-serif;
 }
 
 *{
@@ -30,13 +33,20 @@ box-sizing:border-box;
 scroll-behavior:smooth;
 }
 
-body{
+body,p,li,a,span,div,button,input,textarea,label,small,strong{
 font-family:var(--body-font);
+}
+
+body{
 background:var(--white);
 color:var(--text);
 font-size:16px;
 line-height:1.7;
 overflow-x:hidden;
+}
+
+h1,h2,h3,.logo span{
+font-family:var(--title-font);
 }
 
 .container{
@@ -45,7 +55,7 @@ max-width:1450px;
 margin:auto;
 }
 
-/* NAVIGATION */
+/* NAV */
 nav{
 position:fixed;
 top:0;
@@ -81,7 +91,6 @@ object-fit:contain;
 }
 
 .logo span{
-font-family:var(--title-font);
 font-size:26px;
 font-weight:700;
 letter-spacing:1px;
@@ -90,16 +99,14 @@ color:var(--brand);
 
 .nav-links{
 display:flex;
-align-items:center;
 gap:16px;
+align-items:center;
 }
 
 .nav-links a{
 text-decoration:none;
-font-family:var(--sub-font);
 font-size:12px;
-font-weight:700;
-letter-spacing:.5px;
+font-weight:600;
 text-transform:uppercase;
 color:var(--dark);
 }
@@ -119,7 +126,6 @@ border-radius:999px;
 display:none;
 font-size:22px;
 cursor:pointer;
-color:var(--dark);
 }
 
 /* SECONDARY NAV */
@@ -147,10 +153,8 @@ flex-wrap:wrap;
 
 .secondary-nav a{
 text-decoration:none;
-font-family:var(--sub-font);
 font-size:11px;
-font-weight:700;
-letter-spacing:.7px;
+font-weight:600;
 text-transform:uppercase;
 color:var(--mid);
 }
@@ -190,7 +194,7 @@ display:block;
 padding:12px 0;
 text-decoration:none;
 font-size:13px;
-font-weight:700;
+font-weight:600;
 color:var(--dark);
 border-bottom:1px solid rgba(0,0,0,.06);
 }
@@ -198,8 +202,7 @@ border-bottom:1px solid rgba(0,0,0,.06);
 .mobile-title{
 margin-top:16px;
 font-size:11px;
-font-weight:800;
-letter-spacing:1px;
+font-weight:700;
 text-transform:uppercase;
 color:var(--brand);
 }
@@ -214,29 +217,21 @@ padding-top:185px;
 }
 
 .eyebrow{
-font-family:var(--sub-font);
 font-size:11px;
 font-weight:700;
-letter-spacing:1px;
 text-transform:uppercase;
 color:var(--brand);
 margin-bottom:8px;
 }
 
-h1,h2{
-font-family:var(--title-font);
-line-height:1.05;
-color:var(--text);
-}
-
 h1{
 font-size:52px;
-letter-spacing:-1.2px;
+line-height:1.08;
 }
 
 h2{
 font-size:34px;
-letter-spacing:-1px;
+line-height:1.1;
 margin-bottom:10px;
 }
 
@@ -257,7 +252,6 @@ flex-wrap:wrap;
 padding:14px 20px;
 border-radius:999px;
 text-decoration:none;
-font-family:var(--sub-font);
 font-size:12px;
 font-weight:700;
 }
@@ -319,15 +313,14 @@ color:var(--brand);
 margin-bottom:4px;
 }
 
-/* SECONDARY HERO */
+/* SERVICES */
 .secondary-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:18px;
 }
 
-.secondary-left,
-.secondary-right{
+.secondary-left,.secondary-right{
 padding:26px;
 border-radius:22px;
 }
@@ -481,10 +474,6 @@ section{
 padding:42px 0;
 }
 
-p{
-font-size:14px;
-}
-
 .stats{
 grid-template-columns:1fr;
 }
@@ -513,13 +502,16 @@ font-size:28px;
 h1{
 font-size:34px;
 }
+
+p{
+font-size:14px;
+}
 }
 </style>
 </head>
 
 <body>
 
-<!-- MAIN NAV -->
 <nav>
 <div class="nav-inner">
 
@@ -543,18 +535,17 @@ font-size:34px;
 </div>
 </nav>
 
-<!-- SECONDARY NAV -->
 <div class="secondary-nav">
 <div class="secondary-nav-wrap">
 <a href="#services">Who We Work With</a>
-<a href="#how">How It Works</a>
-<a href="#why">Why Manufacturers Choose Outreach</a>
-<a href="#trust">Transparency & Trust</a>
+<a href="#services">How It Works</a>
+<a href="#about">Why Manufacturers Choose Outreach</a>
+<a href="#contact">Transparency & Trust</a>
 </div>
 </div>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
+
 <div class="close-menu" onclick="closeMenu()">
 <i class="fa-solid fa-xmark"></i>
 </div>
@@ -567,14 +558,14 @@ font-size:34px;
 <div class="mobile-title">Explore More</div>
 
 <a href="#services">Who We Work With</a>
-<a href="#how">How It Works</a>
-<a href="#why">Why Manufacturers Choose Outreach</a>
-<a href="#trust">Transparency & Trust</a>
+<a href="#services">How It Works</a>
+<a href="#about">Why Manufacturers Choose Outreach</a>
+<a href="#contact">Transparency & Trust</a>
+
 </div>
 
 <div class="container">
 
-<!-- HERO -->
 <section class="hero">
 
 <div>
@@ -605,7 +596,6 @@ A structured market-access platform helping Indian manufacturers connect with in
 
 </section>
 
-<!-- SECONDARY HERO -->
 <section id="services">
 
 <div class="secondary-grid">
@@ -635,11 +625,11 @@ For manufacturers who make quality products and are ready to grow beyond India â
 
 </section>
 
-<!-- ABOUT -->
 <section id="about">
 
 <div class="about-title">
 <div class="eyebrow">About Outreach</div>
+
 </div>
 
 <div class="about-grid">
@@ -674,7 +664,6 @@ A dedicated Outreach partner building credibility, visibility, and confidence in
 
 </section>
 
-<!-- CTA -->
 <section id="contact">
 
 <div class="cta">
