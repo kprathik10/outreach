@@ -26,23 +26,28 @@
 --body-font:'Inter',sans-serif;
 }
 
+/* FINAL SCROLL FIX */
+html{
+scroll-behavior:smooth;
+scroll-padding-top:155px;
+}
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-scroll-behavior:smooth;
-}
-
-body,p,li,a,span,div,button,input,textarea,label,small,strong{
-font-family:var(--body-font);
 }
 
 body{
-background:var(--white);
+font-family:var(--body-font);
+background:#fff;
 color:var(--text);
-font-size:16px;
 line-height:1.7;
 overflow-x:hidden;
+}
+
+section[id],footer[id],div[id]{
+scroll-margin-top:155px;
 }
 
 h1,h2,h3,.logo span{
@@ -62,9 +67,9 @@ top:0;
 left:0;
 width:100%;
 z-index:999;
-background:rgba(255,255,255,.96);
+background:rgba(255,255,255,.97);
 backdrop-filter:blur(14px);
-border-bottom:1px solid rgba(0,0,0,.06);
+border-bottom:1px solid rgba(0,0,0,.05);
 }
 
 .nav-inner{
@@ -75,7 +80,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:14px 0;
-gap:18px;
+gap:20px;
 }
 
 .logo-link{
@@ -100,8 +105,8 @@ color:var(--brand);
 
 .nav-links{
 display:flex;
-gap:16px;
 align-items:center;
+gap:16px;
 }
 
 .nav-links a{
@@ -123,10 +128,12 @@ padding:10px 18px;
 border-radius:999px;
 }
 
+/* HAMBURGER */
 .hamburger{
 display:none;
-font-size:22px;
+font-size:24px;
 cursor:pointer;
+color:var(--dark);
 }
 
 /* SECONDARY NAV */
@@ -136,8 +143,7 @@ top:68px;
 left:0;
 width:100%;
 z-index:998;
-background:rgba(255,255,255,.94);
-backdrop-filter:blur(12px);
+background:#fff;
 border-bottom:1px solid rgba(0,0,0,.05);
 }
 
@@ -147,7 +153,7 @@ max-width:1450px;
 margin:auto;
 display:flex;
 justify-content:center;
-gap:22px;
+gap:24px;
 padding:10px 0;
 flex-wrap:wrap;
 }
@@ -169,13 +175,14 @@ color:var(--brand);
 position:fixed;
 top:0;
 right:-100%;
-width:340px;
+width:320px;
+max-width:100%;
 height:100vh;
 background:#fff;
 z-index:1001;
 padding:24px;
-transition:.35s;
-box-shadow:-10px 0 30px rgba(0,0,0,.08);
+transition:.35s ease;
+box-shadow:-12px 0 30px rgba(0,0,0,.08);
 overflow-y:auto;
 }
 
@@ -188,6 +195,7 @@ text-align:right;
 font-size:24px;
 cursor:pointer;
 margin-bottom:14px;
+color:var(--dark);
 }
 
 .mobile-menu a{
@@ -198,6 +206,10 @@ font-size:13px;
 font-weight:600;
 color:var(--dark);
 border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+.mobile-menu a:hover{
+color:var(--brand);
 }
 
 .mobile-title{
@@ -214,7 +226,7 @@ padding:55px 0;
 }
 
 section:first-of-type{
-padding-top:185px;
+padding-top:205px;
 }
 
 .eyebrow{
@@ -228,6 +240,7 @@ margin-bottom:8px;
 h1{
 font-size:52px;
 line-height:1.08;
+margin-bottom:12px;
 }
 
 h2{
@@ -311,26 +324,26 @@ display:block;
 font-size:24px;
 font-family:var(--title-font);
 color:var(--brand);
-margin-bottom:4px;
 }
 
-/* SERVICES */
-.secondary-grid{
+/* TWO COLUMN */
+.secondary-grid,
+.who-enhanced-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:18px;
 }
 
-.secondary-left,.secondary-right{
+.secondary-left,
+.secondary-right,
+.who-panel{
 padding:26px;
 border-radius:22px;
-}
-
-.secondary-left{
 background:var(--light);
 }
 
-.secondary-right{
+.secondary-right,
+.dark-industries{
 background:var(--dark);
 color:#fff;
 }
@@ -339,25 +352,38 @@ color:#fff;
 color:#fff;
 }
 
-.service-list{
+.service-list,
+.who-points,
+.about-list{
 list-style:none;
-margin-top:4px;
+padding:0;
+margin:0;
 }
 
-.service-list li{
+.service-list li,
+.who-points li,
+.about-list li{
 display:flex;
 gap:10px;
 padding:12px 0;
 font-size:14px;
-line-height:1.6;
+border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+.secondary-right li,
+.dark-industries li{
 border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-.service-list li:last-child{
+.service-list li:last-child,
+.who-points li:last-child,
+.about-list li:last-child{
 border-bottom:none;
 }
 
-.service-list i{
+.service-list i,
+.who-points i,
+.about-list i{
 color:var(--accent);
 margin-top:3px;
 }
@@ -388,69 +414,7 @@ border-radius:16px;
 margin-top:14px;
 }
 
-.about-list{
-list-style:none;
-margin-top:8px;
-}
-
-.about-list li{
-display:flex;
-gap:8px;
-padding:8px 0;
-font-size:14px;
-line-height:1.6;
-color:var(--dark);
-}
-
-.about-list i{
-color:var(--brand);
-margin-top:3px;
-}
-
-/* WHO WE WORK WITH */
-.who-enhanced-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-}
-
-.who-panel{
-background:var(--light);
-padding:26px;
-border-radius:22px;
-}
-
-.who-points{
-list-style:none;
-margin:0;
-padding:0;
-}
-
-.who-points li{
-display:flex;
-gap:12px;
-padding:14px 0;
-font-size:14px;
-line-height:1.6;
-color:var(--dark);
-border-bottom:1px solid rgba(0,0,0,.06);
-}
-
-.who-points li:last-child{
-border-bottom:none;
-}
-
-.who-points i{
-color:var(--brand);
-margin-top:3px;
-min-width:18px;
-}
-
-.dark-industries{
-background:var(--dark);
-color:#fff;
-}
-
+/* INDUSTRIES */
 .dark-industries .eyebrow{
 color:var(--accent);
 }
@@ -491,19 +455,13 @@ text-align:center;
 color:#fff;
 }
 
-.cta h2{
-color:#fff;
-font-size:34px;
-}
-
+.cta h2,
 .cta p{
 color:#fff;
-max-width:700px;
-margin:auto;
 }
 
 .cta .btn-secondary{
-border:1px solid #fff;
+border-color:#fff;
 color:#fff;
 }
 
@@ -532,7 +490,7 @@ text-decoration:none;
 font-size:16px;
 box-shadow:0 12px 25px rgba(0,0,0,.16);
 z-index:999;
-transition:.25s ease;
+transition:.25s;
 }
 
 .scroll-top:hover{
@@ -540,8 +498,25 @@ transform:translateY(-4px);
 background:var(--dark);
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 @media(max-width:1180px){
+
+html{
+scroll-padding-top:90px;
+}
+
+section[id],footer[id],div[id]{
+scroll-margin-top:90px;
+}
+
+.nav-links,
+.secondary-nav{
+display:none;
+}
+
+.hamburger{
+display:block;
+}
 
 .hero,
 .secondary-grid,
@@ -550,20 +525,8 @@ background:var(--dark);
 grid-template-columns:1fr;
 }
 
-.nav-links{
-display:none;
-}
-
-.hamburger{
-display:block;
-}
-
-.secondary-nav{
-display:none;
-}
-
 section:first-of-type{
-padding-top:140px;
+padding-top:135px;
 }
 
 h1{font-size:40px;}
@@ -584,21 +547,10 @@ grid-template-columns:1fr;
 flex-direction:column;
 }
 
-.btn-primary,.btn-secondary{
+.btn-primary,
+.btn-secondary{
 width:100%;
 text-align:center;
-}
-
-.mobile-menu{
-width:100%;
-}
-
-.cta{
-padding:28px 18px;
-}
-
-.cta h2{
-font-size:28px;
 }
 
 h1{
@@ -609,12 +561,8 @@ p{
 font-size:14px;
 }
 
-.industry-grid{
-gap:10px;
-}
-
-.who-panel{
-padding:20px;
+.cta{
+padding:28px 18px;
 }
 
 .scroll-top{
@@ -630,6 +578,7 @@ font-size:14px;
 
 <body id="top">
 
+<!-- NAV -->
 <nav>
 <div class="nav-inner">
 
@@ -655,6 +604,7 @@ font-size:14px;
 </div>
 </nav>
 
+<!-- SECONDARY NAV -->
 <div class="secondary-nav">
 <div class="secondary-nav-wrap">
 <a href="#who-work-with">Who We Work With</a>
@@ -664,12 +614,14 @@ font-size:14px;
 </div>
 </div>
 
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
+
 <div class="close-menu" onclick="closeMenu()">
 <i class="fa-solid fa-xmark"></i>
 </div>
 
-<a href="#about">About Outreach</a>
+<a href="#about">About</a>
 <a href="#services">Services</a>
 <a href="#faq">FAQ</a>
 <a href="#contact">Contact</a>
@@ -680,6 +632,7 @@ font-size:14px;
 <a href="#services">How It Works</a>
 <a href="#about">Why Manufacturers Choose Outreach</a>
 <a href="#contact">Transparency & Trust</a>
+
 </div>
 
 <div class="container">
@@ -745,10 +698,8 @@ For manufacturers who make quality products and are ready to grow beyond India �
 
 <div class="about-card">
 <div class="eyebrow">Why Outreach Exists</div>
-<p>
-Outreach was created to support capable Indian manufacturers who want direct, transparent access to global markets.
-</p>
-<img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=900&q=90" alt="Manufacturing">
+<p>Outreach was created to support capable Indian manufacturers who want direct, transparent access to global markets.</p>
+<img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=900&q=90">
 </div>
 
 <div class="about-card">
@@ -758,15 +709,13 @@ Outreach was created to support capable Indian manufacturers who want direct, tr
 <li><i class="fa-solid fa-link"></i>Own buyer relationships</li>
 <li><i class="fa-solid fa-shield-halved"></i>Ethical sustainable growth</li>
 </ul>
-<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=90" alt="Boardroom">
+<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=90">
 </div>
 
 <div class="about-card">
 <div class="eyebrow">What You Get</div>
-<p>
-A dedicated Outreach partner building credibility, visibility, and confidence in international markets.
-</p>
-<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=90" alt="Consulting">
+<p>A dedicated Outreach partner building credibility, visibility, and confidence in international markets.</p>
+<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=90">
 </div>
 
 </div>
@@ -784,7 +733,7 @@ A dedicated Outreach partner building credibility, visibility, and confidence in
 <ul class="who-points">
 <li><i class="fa-solid fa-industry"></i>You have consistent production capacity</li>
 <li><i class="fa-solid fa-globe"></i>You want to reach international buyers directly</li>
-<li><i class="fa-solid fa-chart-line"></i>You’re new to exports or want to improve your current market access</li>
+<li><i class="fa-solid fa-chart-line"></i>You’re new to exports or improve market access</li>
 <li><i class="fa-solid fa-compass"></i>You want clarity instead of confusion</li>
 </ul>
 </div>
@@ -824,7 +773,7 @@ A dedicated Outreach partner building credibility, visibility, and confidence in
 
 </div>
 
-<a href="#top" class="scroll-top" aria-label="Scroll to top">
+<a href="#top" class="scroll-top">
 <i class="fa-solid fa-arrow-up"></i>
 </a>
 
@@ -832,9 +781,16 @@ A dedicated Outreach partner building credibility, visibility, and confidence in
 function openMenu(){
 document.getElementById("mobileMenu").classList.add("active");
 }
+
 function closeMenu(){
 document.getElementById("mobileMenu").classList.remove("active");
 }
+
+document.querySelectorAll('#mobileMenu a').forEach(link=>{
+link.addEventListener('click',function(){
+document.getElementById("mobileMenu").classList.remove("active");
+});
+});
 </script>
 
 </body>
