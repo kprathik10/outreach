@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -12,617 +13,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-:root{
---white:#ffffff;
---light:#d9d9d9;
---mid:#787675;
---dark:#3c3b3b;
---accent:#f59427;
---brand:#e35a1a;
---text:#111111;
---title-font:'Montserrat',sans-serif;
---body-font:'Inter',sans-serif;
-}
-
-/* FINAL SCROLL FIX */
-html{
-scroll-behavior:smooth;
-scroll-padding-top:155px;
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:var(--body-font);
-background:#fff;
-color:var(--text);
-line-height:1.7;
-overflow-x:hidden;
-}
-
-section[id],footer[id],div[id]{
-scroll-margin-top:155px;
-}
-
-h1,h2,h3,.logo span{
-font-family:var(--title-font);
-}
-
-.container{
-width:90%;
-max-width:1450px;
-margin:auto;
-}
-
-/* NAV */
-nav{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-z-index:999;
-background:rgba(255,255,255,.97);
-backdrop-filter:blur(14px);
-border-bottom:1px solid rgba(0,0,0,.05);
-}
-
-.nav-inner{
-width:90%;
-max-width:1450px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:14px 0;
-gap:20px;
-}
-
-.logo-link{
-display:flex;
-align-items:center;
-gap:10px;
-text-decoration:none;
-}
-
-.logo img{
-width:40px;
-height:40px;
-object-fit:contain;
-}
-
-.logo span{
-font-size:26px;
-font-weight:700;
-letter-spacing:1px;
-color:var(--brand);
-}
-
-.nav-links{
-display:flex;
-align-items:center;
-gap:16px;
-}
-
-.nav-links a{
-text-decoration:none;
-font-size:12px;
-font-weight:600;
-text-transform:uppercase;
-color:var(--dark);
-}
-
-.nav-links a:hover{
-color:var(--brand);
-}
-
-.nav-btn{
-background:var(--dark);
-color:#fff!important;
-padding:10px 18px;
-border-radius:999px;
-}
-
-/* HAMBURGER */
-.hamburger{
-display:none;
-font-size:24px;
-cursor:pointer;
-color:var(--dark);
-}
-
-/* SECONDARY NAV */
-.secondary-nav{
-position:fixed;
-top:68px;
-left:0;
-width:100%;
-z-index:998;
-background:#fff;
-border-bottom:1px solid rgba(0,0,0,.05);
-}
-
-.secondary-nav-wrap{
-width:90%;
-max-width:1450px;
-margin:auto;
-display:flex;
-justify-content:center;
-gap:24px;
-padding:10px 0;
-flex-wrap:wrap;
-}
-
-.secondary-nav a{
-text-decoration:none;
-font-size:11px;
-font-weight:600;
-text-transform:uppercase;
-color:var(--mid);
-}
-
-.secondary-nav a:hover{
-color:var(--brand);
-}
-
-/* MOBILE MENU */
-.mobile-menu{
-position:fixed;
-top:0;
-right:-100%;
-width:320px;
-max-width:100%;
-height:100vh;
-background:#fff;
-z-index:1001;
-padding:24px;
-transition:.35s ease;
-box-shadow:-12px 0 30px rgba(0,0,0,.08);
-overflow-y:auto;
-}
-
-.mobile-menu.active{
-right:0;
-}
-
-.close-menu{
-text-align:right;
-font-size:24px;
-cursor:pointer;
-margin-bottom:14px;
-color:var(--dark);
-}
-
-.mobile-menu a{
-display:block;
-padding:12px 0;
-text-decoration:none;
-font-size:13px;
-font-weight:600;
-color:var(--dark);
-border-bottom:1px solid rgba(0,0,0,.06);
-}
-
-.mobile-menu a:hover{
-color:var(--brand);
-}
-
-.mobile-title{
-margin-top:16px;
-font-size:11px;
-font-weight:700;
-text-transform:uppercase;
-color:var(--brand);
-}
-
-/* COMMON */
-section{
-padding:55px 0;
-}
-
-section:first-of-type{
-padding-top:205px;
-}
-
-.eyebrow{
-font-size:11px;
-font-weight:700;
-text-transform:uppercase;
-color:var(--brand);
-margin-bottom:8px;
-}
-
-h1{
-font-size:52px;
-line-height:1.08;
-margin-bottom:12px;
-}
-
-h2{
-font-size:34px;
-line-height:1.1;
-margin-bottom:10px;
-}
-
-p{
-font-size:15px;
-line-height:1.8;
-color:var(--mid);
-}
-
-.btn-row{
-display:flex;
-gap:10px;
-margin-top:20px;
-flex-wrap:wrap;
-}
-
-.btn-primary,.btn-secondary{
-padding:14px 20px;
-border-radius:999px;
-text-decoration:none;
-font-size:12px;
-font-weight:700;
-}
-
-.btn-primary{
-background:var(--brand);
-color:#fff;
-}
-
-.btn-secondary{
-border:1px solid var(--dark);
-color:var(--dark);
-}
-
-/* HERO */
-.hero{
-display:grid;
-grid-template-columns:1.1fr .9fr;
-gap:32px;
-align-items:center;
-}
-
-.hero h1 span{
-color:var(--brand);
-}
-
-.hero-card{
-background:var(--light);
-padding:20px;
-border-radius:24px;
-}
-
-.hero-card img{
-width:100%;
-height:270px;
-object-fit:cover;
-border-radius:18px;
-}
-
-.stats{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:12px;
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(4,1fr); /* one row, four equal cards */
-gap:10px;
-margin-top:12px;
-}
-
-.stat{
-background:#fff;
-padding:14px 10px;
-border-radius:14px;
-font-size:12px;
-text-align:center;
-min-height:88px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-}
-
-.stat strong{
-display:block;
-font-size:22px;
-font-family:var(--title-font);
-color:var(--brand);
-margin-bottom:4px;
-line-height:1;
-}
-
-/* TWO COLUMN */
-.secondary-grid,
-.who-enhanced-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-}
-
-.secondary-left,
-.secondary-right,
-.who-panel{
-padding:26px;
-border-radius:22px;
-background:var(--light);
-}
-
-.secondary-right,
-.dark-industries{
-background:var(--dark);
-color:#fff;
-}
-
-.secondary-right h2{
-color:#fff;
-}
-
-.service-list,
-.who-points,
-.about-list{
-list-style:none;
-padding:0;
-margin:0;
-}
-
-.service-list li,
-.who-points li,
-.about-list li{
-display:flex;
-gap:10px;
-padding:12px 0;
-font-size:14px;
-border-bottom:1px solid rgba(0,0,0,.06);
-}
-
-.secondary-right li,
-.dark-industries li{
-border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.service-list li:last-child,
-.who-points li:last-child,
-.about-list li:last-child{
-border-bottom:none;
-}
-
-.service-list i,
-.who-points i,
-.about-list i{
-color:var(--accent);
-margin-top:3px;
-}
-
-/* ABOUT */
-.about-title{
-text-align:center;
-margin-bottom:18px;
-}
-
-.about-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:16px;
-}
-
-.about-card{
-background:var(--light);
-padding:22px;
-border-radius:22px;
-}
-
-.about-card img{
-width:100%;
-height:190px;
-object-fit:cover;
-border-radius:16px;
-margin-top:14px;
-}
-
-.about-master-card{
-background:var(--light);
-padding:34px;
-border-radius:28px;
-}
-
-.about-master-card .about-title{
-text-align:center;
-margin-bottom:24px;
-}
-
-.about-master-card .inner-card{
-background:#ffffff;
-padding:22px;
-border-radius:22px;
-}
-
-/* INDUSTRIES */
-.dark-industries .eyebrow{
-color:var(--accent);
-}
-
-.industry-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:14px;
-margin-top:10px;
-}
-
-.industry-item{
-background:rgba(255,255,255,.08);
-padding:18px 14px;
-border-radius:16px;
-text-align:center;
-}
-
-.industry-item i{
-display:block;
-font-size:22px;
-color:var(--accent);
-margin-bottom:10px;
-}
-
-.industry-item span{
-font-size:13px;
-font-weight:600;
-color:#fff;
-}
-
-/* CTA */
-.cta{
-background:var(--mid);
-padding:48px;
-border-radius:24px;
-text-align:center;
-color:#fff;
-}
-
-.cta h2,
-.cta p{
-color:#fff;
-}
-
-.cta .btn-secondary{
-border-color:#fff;
-color:#fff;
-}
-
-/* FOOTER */
-footer{
-padding:38px 0 55px;
-text-align:center;
-font-size:13px;
-color:var(--mid);
-}
-
-/* SCROLL TOP */
-.scroll-top{
-position:fixed;
-right:22px;
-bottom:22px;
-width:48px;
-height:48px;
-border-radius:50%;
-background:var(--brand);
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-text-decoration:none;
-font-size:16px;
-box-shadow:0 12px 25px rgba(0,0,0,.16);
-z-index:999;
-transition:.25s;
-}
-
-.scroll-top:hover{
-transform:translateY(-4px);
-background:var(--dark);
-}
-
-.secondary-left .eyebrow,
-.secondary-right .eyebrow,
-.about-title .eyebrow,
-.about-card .eyebrow,
-.dark-industries .eyebrow{
-font-size:20px !important;
-letter-spacing:.4px;
-}
-
-/* MOBILE */
-
-@media(max-width:1180px){
-
-html{
-scroll-padding-top:90px;
-}
-
-section[id],footer[id],div[id]{
-scroll-margin-top:90px;
-}
-
-.nav-links,
-.secondary-nav{
-display:none;
-}
-
-.hamburger{
-display:block;
-}
-
-.hero,
-.secondary-grid,
-.about-grid,
-.who-enhanced-grid{
-grid-template-columns:1fr;
-}
-
-section:first-of-type{
-padding-top:135px;
-}
-
-h1{font-size:40px;}
-h2{font-size:28px;}
-}
-
-@media(max-width:700px){
-
-.stats{
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-}
-
-.stat{
-min-height:82px;
-}
-
-section{
-padding:42px 0;
-}
-
-.btn-primary,
-.btn-secondary{
-width:100%;
-text-align:center;
-}
-
-h1{
-font-size:34px;
-}
-
-p{
-font-size:14px;
-}
-
-.cta{
-padding:28px 18px;
-}
-
-.scroll-top{
-right:16px;
-bottom:16px;
-width:44px;
-height:44px;
-font-size:14px;
-}
-}
-</style>
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
 </head>
 
 <body id="top">
 
-<!-- NAV -->
 <nav>
 <div class="nav-inner">
-
 <div class="logo">
 <a href="#top" class="logo-link">
 <img src="logo.png" alt="Outreach Logo">
@@ -641,11 +39,9 @@ font-size:14px;
 <div class="hamburger" onclick="openMenu()">
 <i class="fa-solid fa-bars"></i>
 </div>
-
 </div>
 </nav>
 
-<!-- SECONDARY NAV -->
 <div class="secondary-nav">
 <div class="secondary-nav-wrap">
 <a href="#who-work-with">Who We Work With</a>
@@ -655,9 +51,7 @@ font-size:14px;
 </div>
 </div>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-
 <div class="close-menu" onclick="closeMenu()">
 <i class="fa-solid fa-xmark"></i>
 </div>
@@ -673,7 +67,6 @@ font-size:14px;
 <a href="#services">How It Works</a>
 <a href="#about">Why Manufacturers Choose Outreach</a>
 <a href="#contact">Transparency & Trust</a>
-
 </div>
 
 <div class="container">
@@ -711,6 +104,7 @@ A structured market-access platform helping Indian manufacturers connect with in
 <div class="secondary-left">
 <div class="eyebrow">Who It’s For</div>
 <h2>Serious Manufacturers Ready To Grow</h2>
+
 <p>
 For manufacturers who make quality products and are ready to grow beyond India — but need the right market access, visibility, and guidance.
 </p>
@@ -718,6 +112,7 @@ For manufacturers who make quality products and are ready to grow beyond India �
 
 <div class="secondary-right">
 <div class="eyebrow">What We Help You Achieve</div>
+
 <ul class="service-list">
 <li><i class="fa-solid fa-globe"></i>Reach serious international buyers</li>
 <li><i class="fa-solid fa-briefcase"></i>Present your products professionally</li>
@@ -730,56 +125,44 @@ For manufacturers who make quality products and are ready to grow beyond India �
 </section>
 
 <section id="about">
-
 <div class="about-master-card">
 
 <div class="about-title">
 <div class="eyebrow">About Outreach</div>
+<h2>Built for Manufacturers, Not Middlemen</h2>
 </div>
 
 <div class="about-grid">
 
 <div class="about-card inner-card">
 <div class="eyebrow">Built for Manufacturers, Not Middlemen</div>
-
 <p>
 Outreach was created to support capable Indian manufacturers who want direct, transparent access to global markets.
 </p>
-
-<img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=900&q=90" alt="">
+<img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=900&q=90" alt="Manufacturing">
 </div>
-
 
 <div class="about-card inner-card">
 <div class="eyebrow">Our Belief</div>
-
 <ul class="about-list">
 <li><i class="fa-solid fa-globe"></i>Global visibility matters</li>
 <li><i class="fa-solid fa-link"></i>Own buyer relationships</li>
 <li><i class="fa-solid fa-shield-halved"></i>Ethical sustainable growth</li>
 </ul>
-
-<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=90" alt="">
+<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=90" alt="Boardroom">
 </div>
 
-
 <div class="about-card inner-card">
-
 <div class="eyebrow">What You Get</div>
-
 <p>
 A dedicated Outreach partner building credibility, visibility, and confidence in international markets.
 </p>
-
-<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=90" alt="">
+<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=90" alt="Consulting">
 </div>
 
 </div>
-
 </div>
-
 </section>
-
 
 <section id="who-work-with">
 <div class="about-title">
@@ -793,7 +176,7 @@ A dedicated Outreach partner building credibility, visibility, and confidence in
 <ul class="who-points">
 <li><i class="fa-solid fa-industry"></i>You have consistent production capacity</li>
 <li><i class="fa-solid fa-globe"></i>You want to reach international buyers directly</li>
-<li><i class="fa-solid fa-chart-line"></i>You’re new to exports or improve market access</li>
+<li><i class="fa-solid fa-chart-line"></i>You’re new to exports or want to improve your current market access</li>
 <li><i class="fa-solid fa-compass"></i>You want clarity instead of confusion</li>
 </ul>
 </div>
@@ -809,7 +192,6 @@ A dedicated Outreach partner building credibility, visibility, and confidence in
 <div class="industry-item"><i class="fa-solid fa-car-side"></i><span>Auto Parts</span></div>
 <div class="industry-item"><i class="fa-solid fa-cubes"></i><span>Manufacturing</span></div>
 </div>
-
 </div>
 
 </div>
@@ -828,7 +210,7 @@ A dedicated Outreach partner building credibility, visibility, and confidence in
 </section>
 
 <footer id="faq">
-© OUTREACH · Premium Global Market Access Platform
+© OUTREACH · Global Market Access Platform
 </footer>
 
 </div>
@@ -836,22 +218,6 @@ A dedicated Outreach partner building credibility, visibility, and confidence in
 <a href="#top" class="scroll-top">
 <i class="fa-solid fa-arrow-up"></i>
 </a>
-
-<script>
-function openMenu(){
-document.getElementById("mobileMenu").classList.add("active");
-}
-
-function closeMenu(){
-document.getElementById("mobileMenu").classList.remove("active");
-}
-
-document.querySelectorAll('#mobileMenu a').forEach(link=>{
-link.addEventListener('click',function(){
-document.getElementById("mobileMenu").classList.remove("active");
-});
-});
-</script>
 
 </body>
 </html>
