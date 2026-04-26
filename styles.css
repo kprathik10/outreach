@@ -627,7 +627,7 @@ align-items:stretch;
 }
 
 .flow-card{
-background:#ffffff;
+background:#787675;
 border-radius:22px;
 padding:18px;
 display:flex;
@@ -640,7 +640,8 @@ box-shadow:0 6px 18px rgba(0,0,0,.04);
 width:52px;
 height:52px;
 border-radius:50%;
-background:#f3f3f3;
+background:rgba(255,255,255,.12);
+color:#f59427;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -652,7 +653,7 @@ margin-bottom:12px;
 .flow-step{
 font-size:12px;
 font-weight:700;
-color:#e35a1a;
+color:#f59427;
 margin-bottom:6px;
 font-family:'Montserrat',sans-serif;
 }
@@ -669,7 +670,7 @@ margin-bottom:8px;
 .flow-card p{
 font-size:13px;
 line-height:1.55;
-color:#787675;
+color:#ffffff;
 }
 
 .flow-arrow{
