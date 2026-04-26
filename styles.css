@@ -483,6 +483,42 @@ line-height:1.7;
 color:var(--mid);
 }
 
+.about-list{
+display:flex;
+flex-direction:column;
+gap:0;
+margin-top:6px;
+padding:0;
+}
+
+.about-list li{
+display:grid;
+grid-template-columns:18px 1fr;
+column-gap:10px;
+align-items:start;
+padding:14px 0;
+font-size:14px;
+line-height:1.6;
+color:#787675;
+border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+.about-list li:last-child{
+border-bottom:none;
+}
+
+.about-list i{
+display:flex;
+align-items:center;
+justify-content:center;
+width:18px;
+height:18px;
+font-size:13px;
+color:#f59427;
+margin-top:2px;
+flex-shrink:0;
+}
+
 /* INDUSTRIES */
 .dark-industries .eyebrow{
 color:#fff;
