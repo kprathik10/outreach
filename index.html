@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -428,6 +427,23 @@ border-radius:16px;
 margin-top:14px;
 }
 
+.about-master-card{
+background:var(--light);
+padding:34px;
+border-radius:28px;
+}
+
+.about-master-card .about-title{
+text-align:center;
+margin-bottom:24px;
+}
+
+.about-master-card .inner-card{
+background:#ffffff;
+padding:22px;
+border-radius:22px;
+}
+
 /* INDUSTRIES */
 .dark-industries .eyebrow{
 color:var(--accent);
@@ -512,7 +528,17 @@ transform:translateY(-4px);
 background:var(--dark);
 }
 
+.secondary-left .eyebrow,
+.secondary-right .eyebrow,
+.about-title .eyebrow,
+.about-card .eyebrow,
+.dark-industries .eyebrow{
+font-size:20px !important;
+letter-spacing:.4px;
+}
+
 /* MOBILE */
+
 @media(max-width:1180px){
 
 html{
@@ -704,37 +730,56 @@ For manufacturers who make quality products and are ready to grow beyond India â
 </section>
 
 <section id="about">
+
+<div class="about-master-card">
+
 <div class="about-title">
 <div class="eyebrow">About Outreach</div>
-<h2>Built for Manufacturers, Not Middlemen</h2>
 </div>
 
 <div class="about-grid">
 
-<div class="about-card">
-<div class="eyebrow">Why Outreach Exists</div>
-<p>Outreach was created to support capable Indian manufacturers who want direct, transparent access to global markets.</p>
-<img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=900&q=90">
+<div class="about-card inner-card">
+<div class="eyebrow">Built for Manufacturers, Not Middlemen</div>
+
+<p>
+Outreach was created to support capable Indian manufacturers who want direct, transparent access to global markets.
+</p>
+
+<img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=900&q=90" alt="">
 </div>
 
-<div class="about-card">
+
+<div class="about-card inner-card">
 <div class="eyebrow">Our Belief</div>
+
 <ul class="about-list">
 <li><i class="fa-solid fa-globe"></i>Global visibility matters</li>
 <li><i class="fa-solid fa-link"></i>Own buyer relationships</li>
 <li><i class="fa-solid fa-shield-halved"></i>Ethical sustainable growth</li>
 </ul>
-<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=90">
+
+<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=90" alt="">
 </div>
 
-<div class="about-card">
+
+<div class="about-card inner-card">
+
 <div class="eyebrow">What You Get</div>
-<p>A dedicated Outreach partner building credibility, visibility, and confidence in international markets.</p>
-<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=90">
+
+<p>
+A dedicated Outreach partner building credibility, visibility, and confidence in international markets.
+</p>
+
+<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=90" alt="">
 </div>
 
 </div>
+
+</div>
+
 </section>
+
 
 <section id="who-work-with">
 <div class="about-title">
