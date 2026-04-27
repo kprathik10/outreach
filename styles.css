@@ -1004,56 +1004,222 @@ background:var(--brand);
 ABOUT
 ========================= */
 
-.about-grid{
+.about-title.center{
+text-align:center;
+margin-bottom:24px;
+}
+
+.about-title.center h2{
+max-width:780px;
+margin:10px auto 0;
+}
+
+/* GRID */
+
+.about-editorial-grid{
 display:grid;
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:1.08fr .92fr;
+gap:22px;
+align-items:stretch;
+}
+
+/* LEFT FEATURE */
+
+.about-feature-card{
+background:#ffffff;
+border-radius:32px;
+padding:28px;
+box-shadow:var(--shadow-sm);
+display:flex;
+flex-direction:column;
 gap:18px;
+height:100%;
+overflow:hidden;
+position:relative;
 }
 
-.about-card{
-display:flex;
-flex-direction:column;
-gap:10px;
-}
-
-.about-card p{
-font-size:14px;
-line-height:1.75;
-}
-
-.about-card img{
-width:100%;
+.about-feature-card::before{
+content:"";
+position:absolute;
+top:-90px;
+right:-90px;
+width:220px;
 height:220px;
-object-fit:cover;
-border-radius:18px;
-margin-top:auto;
+border-radius:50%;
+background:rgba(227,90,26,.05);
 }
 
-.about-list{
+.about-feature-card > *{
+position:relative;
+z-index:2;
+}
+
+.about-card-top h3{
+margin-bottom:14px;
+}
+
+.about-card-top p{
+font-size:15px;
+line-height:1.82;
+max-width:560px;
+margin-bottom:0;
+}
+
+.about-feature-card img{
+width:100%;
+height:calc(100% - 150px);
+object-fit:cover;
+object-position:center;
+border-radius:24px;
+display:block;
+flex-grow:1;
+min-height:260px;
+}
+
+/* RIGHT COLUMN */
+
+.about-side-stack{
+display:grid;
+grid-template-rows:1fr 1fr;
+gap:22px;
+}
+
+/* BELIEF CARD */
+
+.about-belief-card,
+.about-value-card{
+background:#ffffff;
+border-radius:32px;
+padding:28px;
+box-shadow:var(--shadow-sm);
+}
+
+.about-belief-card h3,
+.about-value-card h3{
+margin-bottom:18px;
+}
+
+.belief-list{
 display:flex;
 flex-direction:column;
-gap:0;
-margin-top:2px;
+gap:12px;
 }
 
-.about-list li{
+.belief-row{
 display:grid;
-grid-template-columns:18px 1fr;
-gap:10px;
-padding:12px 0;
-border-bottom:1px solid rgba(0,0,0,.06);
-font-size:14px;
-line-height:1.55;
-color:var(--muted);
+grid-template-columns:46px 1fr;
+gap:14px;
+align-items:center;
+padding:14px;
+border-radius:18px;
+background:#f8f8f8;
 }
 
-.about-list li:last-child{
-border-bottom:none;
-}
-
-.about-list i{
+.belief-row i{
+width:46px;
+height:46px;
+border-radius:14px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(227,90,26,.08);
 color:var(--brand);
-margin-top:3px;
+font-size:18px;
+}
+
+.belief-row span{
+font-size:15px;
+font-weight:500;
+line-height:1.5;
+}
+
+/* VALUE CARD */
+
+.about-value-card{
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+gap:18px;
+overflow:hidden;
+}
+
+.about-value-copy p{
+font-size:15px;
+line-height:1.82;
+}
+
+.about-value-card img{
+width:100%;
+height:170px;
+object-fit:cover;
+border-radius:22px;
+display:block;
+}
+
+/* TABLET */
+
+@media(max-width:1180px){
+
+.about-editorial-grid{
+grid-template-columns:1fr;
+}
+
+.about-side-stack{
+grid-template-rows:auto;
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.about-title.center h2{
+font-size:30px;
+}
+
+.about-editorial-grid,
+.about-side-stack{
+grid-template-columns:1fr;
+}
+
+.about-feature-card,
+.about-belief-card,
+.about-value-card{
+padding:22px;
+border-radius:24px;
+}
+
+.about-feature-card img{
+height:240px;
+border-radius:18px;
+}
+
+.about-value-card img{
+height:180px;
+border-radius:18px;
+}
+
+.belief-row{
+grid-template-columns:40px 1fr;
+padding:12px;
+gap:12px;
+}
+
+.belief-row i{
+width:40px;
+height:40px;
+font-size:16px;
+border-radius:12px;
+}
+
+.belief-row span,
+.about-card-top p,
+.about-value-copy p{
+font-size:14px;
+}
+
 }
 
 /* =========================
