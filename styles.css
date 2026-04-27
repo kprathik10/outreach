@@ -1060,146 +1060,108 @@ margin-top:3px;
 WHO WE WORK WITH
 ========================= */
 
-/* =====================================
-WHO WE WORK WITH - PREMIUM REBUILD
-Headline Left / Image Right
-Replace old who section CSS
-===================================== */
-
-
-.who-premium-layout{
-display:grid;
-grid-template-columns:1.02fr .98fr;
-gap:18px;
-align-items:stretch;
-margin-top:6px;
-}
-
-/* LEFT */
-
-.who-premium-left{
+.who-hierarchy-wrap{
 background:#ffffff;
 border-radius:26px;
-padding:24px;
+padding:22px;
 box-shadow:var(--shadow-sm);
-display:flex;
-flex-direction:column;
 position:relative;
 overflow:hidden;
 }
 
-.who-premium-left::before{
+.who-hierarchy-wrap::before{
 content:"";
 position:absolute;
 top:-70px;
 right:-70px;
-width:170px;
-height:170px;
+width:160px;
+height:160px;
 border-radius:50%;
 background:rgba(227,90,26,.05);
 }
 
-.who-premium-left > *{
+.who-hierarchy-wrap > *{
 position:relative;
 z-index:2;
 }
 
-.who-premium-left h2{
-font-size:30px;
-line-height:1.12;
-margin-bottom:10px;
-max-width:560px;
+/* TOP NODE */
+
+.who-main-node{
+max-width:480px;
+margin:0 auto;
+padding:16px 18px;
+border-radius:20px;
+background:#f8f8f8;
+text-align:center;
 }
 
-.who-lead{
-font-size:14px;
-line-height:1.72;
-margin-bottom:16px;
-max-width:560px;
+.who-main-node h2{
+margin:0;
+font-size:28px;
+line-height:1.15;
 }
 
-/* CHECKLIST */
+/* CONNECTOR */
 
-.who-checklist{
-display:flex;
-flex-direction:column;
+.who-line{
+width:2px;
+height:22px;
+background:linear-gradient(to bottom,var(--brand),rgba(227,90,26,.12));
+margin:10px auto 12px;
+border-radius:999px;
+}
+
+/* GRID */
+
+.who-criteria-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
 gap:10px;
 }
 
-.who-check{
-display:grid;
-grid-template-columns:38px 1fr;
-gap:12px;
-align-items:center;
-padding:10px 12px;
-border-radius:16px;
+.who-criteria-card{
 background:#f8f8f8;
+border-radius:18px;
+padding:14px;
+min-height:122px;
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+transition:.24s ease;
 }
 
-.who-check i{
-width:38px;
-height:38px;
-border-radius:12px;
+.who-criteria-card:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 20px rgba(0,0,0,.04);
+}
+
+.who-criteria-icon{
+width:40px;
+height:40px;
+border-radius:14px;
 display:flex;
 align-items:center;
 justify-content:center;
 background:rgba(227,90,26,.08);
 color:var(--brand);
-font-size:15px;
+font-size:16px;
+margin-bottom:10px;
 }
 
-.who-check span{
-font-size:14px;
-line-height:1.45;
-font-weight:500;
-}
-
-/* BADGE */
-
-.who-badge{
-margin-top:14px;
-display:flex;
-gap:8px;
-align-items:center;
-padding:12px 14px;
-border-radius:16px;
-background:rgba(227,90,26,.06);
+.who-criteria-card p{
 font-size:13px;
-font-weight:600;
-}
-
-.who-badge i{
-color:var(--brand);
-}
-
-/* RIGHT */
-
-.who-premium-right{
-background:#ffffff;
-border-radius:26px;
-padding:12px;
-box-shadow:var(--shadow-sm);
-display:flex;
-}
-
-.who-premium-right img{
-width:100%;
-height:100%;
-min-height:100%;
-object-fit:cover;
-border-radius:18px;
+line-height:1.45;
+color:var(--text);
+margin:0;
 }
 
 /* TABLET */
 
 @media(max-width:1180px){
 
-.who-premium-layout{
-grid-template-columns:1fr;
-}
-
-.who-premium-right img{
-height:320px;
+.who-main-node{
+max-width:100%;
 }
 
 }
@@ -1208,42 +1170,51 @@ height:320px;
 
 @media(max-width:700px){
 
-.who-premium-left,
-.who-premium-right{
+.who-hierarchy-wrap{
 padding:18px;
 border-radius:22px;
 }
 
-.who-premium-left h2{
-font-size:26px;
+.who-main-node{
+padding:14px;
+border-radius:18px;
 }
 
-.who-lead{
-font-size:14px;
+.who-main-node h2{
+font-size:24px;
 }
 
-.who-check{
-grid-template-columns:34px 1fr;
-padding:10px;
+.who-line{
+height:18px;
+margin:8px auto 10px;
+}
+
+.who-criteria-grid{
+grid-template-columns:1fr;
 gap:10px;
 }
 
-.who-check i{
-width:34px;
-height:34px;
-font-size:14px;
-}
-
-.who-check span{
-font-size:13px;
-}
-
-.who-premium-right img{
-height:220px;
+.who-criteria-card{
+min-height:auto;
+padding:14px;
 border-radius:16px;
 }
 
+.who-criteria-icon{
+width:36px;
+height:36px;
+font-size:14px;
+border-radius:12px;
+margin-bottom:8px;
 }
+
+.who-criteria-card p{
+font-size:12px;
+line-height:1.4;
+}
+
+}
+
 /* =====================================
 INDUSTRIES SEPARATE PREMIUM SECTION
 ===================================== */
