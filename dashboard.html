@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Enquiries</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f7f7f7;
+padding:40px;
+margin:0;
+}
+
+.login-box,
+.dashboard{
+max-width:1100px;
+margin:auto;
+background:#fff;
+padding:28px;
+border-radius:24px;
+box-shadow:0 15px 30px rgba(0,0,0,.08);
+}
+
+input{
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:12px;
+margin-bottom:14px;
+}
+
+button{
+padding:14px 18px;
+border:none;
+border-radius:12px;
+background:#e35a1a;
+color:#fff;
+cursor:pointer;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+font-size:14px;
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid #eee;
+text-align:left;
+vertical-align:top;
+}
+
+th{
+background:#fafafa;
+}
+
+.hidden{
+display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-box" id="loginBox">
+<h2>Admin Access</h2>
+<input type="password" id="pass" placeholder="Enter Passcode">
+<button onclick="login()">Enter</button>
+</div>
+
+<div class="dashboard hidden" id="dashboard">
+<h2>Enquiries Dashboard</h2>
+
+<table id="dataTable">
+<thead>
+<tr>
+<th>Date</th>
+<th>Name</th>
+<th>Company</th>
+<th>Email</th>
+<th>Phone</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
+</div>
+
+<script>
+const PASSCODE = "outreach2026";
+const API = "https://script.google.com/macros/s/AKfycbyfZPVkYcF8GAvQnV4cBrToJTvzmOOgteOjSNm2Aqpj2YrFECcaLu0N7HoIWmVPlIgk/exec";
+
+function login(){
+const val = document.getElementById("pass").value;
+
+if(val === PASSCODE){
+document.getElementById("loginBox").classList.add("hidden");
+document.getElementById("dashboard").classList.remove("hidden");
+loadData();
+}else{
+alert("Wrong passcode");
+}
+}
+
+function loadData(){
+
+fetch(API)
+.then(r => r.json())
+.then(rows => {
+
+rows.reverse();
+
+const body = document.querySelector("#dataTable tbody");
+
+rows.forEach(row => {
+
+body.innerHTML += `
+<tr>
+<td>${row[0]}</td>
+<td>${row[1]}</td>
+<td>${row[2]}</td>
+<td>${row[3]}</td>
+<td>${row[4]}</td>
+<td>${row[5]}</td>
+</tr>
+`;
+
+});
+
+});
+
+}
+</script>
+
+</body>
+</html>
