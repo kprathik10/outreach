@@ -41,6 +41,22 @@ color:#fff;
 cursor:pointer;
 }
 
+.refresh-btn{
+background:#111;
+color:#fff;
+transition:.25s ease;
+}
+
+.refresh-btn:hover{
+background:#333;
+transform:translateY(-1px);
+}
+
+.refresh-btn.loading{
+opacity:.8;
+pointer-events:none;
+}
+
 table{
 width:100%;
 border-collapse:collapse;
@@ -187,10 +203,13 @@ box-shadow:0 0 0 3px rgba(227,90,26,.08);
 
 <div class="dashboard hidden" id="dashboard">
 <h2>Enquiries Dashboard</h2>
-
 <div class="top-tools">
 
-<input type="text" id="searchBox" placeholder="Search enquiries..." onkeyup="filterRows()">
+<input type="text" id="searchBox" placeholder="Search enquiries..." onkeyup="filterTable()">
+
+<button type="button" onclick="refreshData()" class="refresh-btn">
+↻ Refresh Data
+</button>
 
 <button onclick="exportCSV()">Export CSV</button>
 
@@ -258,7 +277,45 @@ renderRows(cachedRows);
 
 });
 
+
 }
+
+
+function refreshData(){
+
+const btn = document.querySelector(".refresh-btn");
+
+btn.classList.add("loading");
+btn.innerText = "Refreshing...";
+
+fetch(API + "?t=" + Date.now())
+.then(r => r.json())
+.then(rows => {
+
+cachedRows = rows.reverse();
+renderRows(cachedRows);
+
+btn.classList.remove("loading");
+btn.innerText = "✓ Refreshed";
+
+setTimeout(() => {
+btn.innerText = "↻ Refresh Data";
+}, 1400);
+
+})
+.catch(() => {
+
+btn.classList.remove("loading");
+btn.innerText = "Try Again";
+
+setTimeout(() => {
+btn.innerText = "↻ Refresh Data";
+}, 1400);
+
+});
+
+}
+
 function filterTable(){
 
 const filters = document.querySelectorAll(".filter-row input");
