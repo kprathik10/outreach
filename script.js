@@ -243,25 +243,95 @@ document.getElementById("enquiryModal").classList.remove("active");
 document.body.style.overflow = "";
 }
 
+function validatePhoneNumber(value){
+
+const cleaned = value.replace(/[^\d+]/g,"").replace(/\s/g,"");
+const digits = cleaned.replace(/\+/g,"");
+
+if(digits.length < 10) return false;
+if(digits.length > 15) return false;
+
+if(/^(\d)\1+$/.test(digits)) return false;
+
+return true;
+}
+
 document.getElementById("enquiryForm").addEventListener("submit", function(e){
 
 e.preventDefault();
 
-const form = new FormData(this);
+const form = this;
+const phone = document.getElementById("phone");
+const phoneError = document.getElementById("phoneError");
+
+phone.classList.remove("input-invalid");
+phoneError.innerText = "";
+
+if(!validatePhoneNumber(phone.value.trim())){
+phone.classList.add("input-invalid");
+phoneError.innerText = "Enter a valid mobile number.";
+return;
+}
+const btn = document.getElementById("submitBtn");
+const success = document.getElementById("formSuccess");
+
+btn.disabled = true;
+btn.classList.remove("loading","success");
+btn.classList.add("success");
+
+success.innerText = "Thank you. We’ll contact you shortly.";
+success.classList.add("show");
+
+/* collect data now */
+const data = new FormData(form);
+
+/* instant reset */
+form.reset();
+
+/* close modal quickly */
+setTimeout(() => {
+closeEnquiry();
+}, 1400);
+
+/* restore button UI */
+setTimeout(() => {
+btn.disabled = false;
+btn.classList.remove("success");
+success.classList.remove("show");
+}, 1800);
+
+/* background send with retry */
+submitWithRetry(data, 3);
+
+});
+
+
+function submitWithRetry(formData, retries){
 
 fetch("https://script.google.com/macros/s/AKfycbyfZPVkYcF8GAvQnV4cBrToJTvzmOOgteOjSNm2Aqpj2YrFECcaLu0N7HoIWmVPlIgk/exec", {
 method:"POST",
-body:form
+body:formData
 })
-.then(res => res.text())
-.then(() => {
-
-document.getElementById("formArea").style.display = "none";
-document.getElementById("successArea").style.display = "block";
-
+.then(r => {
+if(!r.ok) throw new Error("Failed");
+return r.text();
 })
 .catch(() => {
-alert("Something went wrong.");
-});
+
+if(retries > 1){
+
+setTimeout(() => {
+submitWithRetry(formData, retries - 1);
+}, 2500);
+
+}else{
+
+setTimeout(() => {
+alert("We received your enquiry request, but submission confirmation was delayed. Please message us if needed.");
+}, 3000);
+
+}
 
 });
+
+}

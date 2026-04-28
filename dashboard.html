@@ -21,6 +21,7 @@ background:#fff;
 padding:28px;
 border-radius:24px;
 box-shadow:0 15px 30px rgba(0,0,0,.08);
+overflow:hidden;
 }
 
 input{
@@ -45,6 +46,11 @@ width:100%;
 border-collapse:collapse;
 margin-top:20px;
 font-size:14px;
+}
+
+.table-wrap{
+overflow-x:auto;
+border-radius:18px;
 }
 
 th,td{
@@ -95,23 +101,43 @@ padding:8px;
 
 table{
 width:100%;
-border-collapse:collapse;
+border-collapse:separate;
+border-spacing:0;
 margin-top:18px;
 font-size:14px;
 table-layout:fixed;
+background:#fff;
+border:1px solid #ececec;
+border-radius:18px;
+overflow:hidden;
+}
+
+th,td{
+padding:14px 14px;
+border-bottom:1px solid #f0f0f0;
+text-align:left;
+vertical-align:top;
+word-break:break-word;
+}
+
+tbody tr:hover{
+background:#fafafa;
 }
 
 .main-head th{
-background:#f3f3f3;
+background:#f8f8f8;
+font-weight:700;
+font-size:14px;
 cursor:pointer;
 position:sticky;
 top:0;
-z-index:2;
+z-index:3;
 user-select:none;
+white-space:nowrap;
 }
 
 .main-head th:hover{
-background:#ececec;
+background:#f2f2f2;
 }
 
 th,td{
@@ -123,17 +149,29 @@ word-break:break-word;
 }
 
 .filter-row th{
-padding:6px;
-background:#fafafa;
+background:#ffffff;
+padding:10px;
+border-bottom:1px solid #ececec;
 }
 
 .filter-row input{
 width:100%;
-padding:7px 8px;
-font-size:12px;
-border:1px solid #ddd;
-border-radius:6px;
+height:38px;
+padding:0 12px;
+font-size:13px;
+border:1px solid #dddddd;
+border-radius:10px;
+background:#fafafa;
 margin:0;
+outline:none;
+transition:.2s ease;
+box-sizing:border-box;
+}
+
+.filter-row input:focus{
+border-color:#e35a1a;
+background:#fff;
+box-shadow:0 0 0 3px rgba(227,90,26,.08);
 }
 
 </style>
@@ -158,6 +196,7 @@ margin:0;
 
 </div>
 
+<div class="table-wrap">
 <table id="dataTable">
 <thead>
 
@@ -182,6 +221,7 @@ margin:0;
 </thead>
 <tbody></tbody>
 </table>
+</div>
 
 </div>
 
@@ -204,7 +244,7 @@ alert("Wrong passcode");
 let cachedRows = [];
 
 function loadData(){
-    
+
 document.querySelector("#dataTable tbody").innerHTML =
 "<tr><td colspan='6'>Loading...</td></tr>";
     
