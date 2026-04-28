@@ -232,3 +232,36 @@ scrollTopBtn.classList.remove('show');
 }
 });
 });
+
+function openEnquiry(){
+document.getElementById("enquiryModal").classList.add("active");
+document.body.style.overflow = "hidden";
+}
+
+function closeEnquiry(){
+document.getElementById("enquiryModal").classList.remove("active");
+document.body.style.overflow = "";
+}
+
+document.getElementById("enquiryForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const form = new FormData(this);
+
+fetch("https://script.google.com/macros/s/AKfycbyD1LX_06HnhanfrZq0GwAi9cr46bTo6slvFP2VkHiM_x6ycz5pcXMNDNNAqs7SDrw9/exec", {
+method:"POST",
+body:form
+})
+.then(res => res.text())
+.then(() => {
+
+document.getElementById("formArea").style.display = "none";
+document.getElementById("successArea").style.display = "block";
+
+})
+.catch(() => {
+alert("Something went wrong.");
+});
+
+});
