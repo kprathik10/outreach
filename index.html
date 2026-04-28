@@ -84,8 +84,10 @@ A structured market-access platform helping Indian manufacturers connect with in
 </p>
 
 <div class="btn-row">
-<a href="#" class="btn-primary">Click If You’re Export-Ready</a>
-<a href="#" class="btn-secondary">Start Global Market Access</a>
+<a href="#" class="btn-primary">Check If You’re Export-Ready</a>
+<a href="javascript:void(0)" onclick="openEnquiry()" class="btn-primary">
+Start Global Market Access
+</a>
 </div>
 
 </div>
@@ -398,6 +400,7 @@ Built for capable product businesses producing quality goods and ready to expand
 
 <section id="trust">
 
+
 <div class="about-title">
 <div class="eyebrow">Transparency & Trust</div>
 </div>
@@ -432,8 +435,6 @@ Built for capable product businesses producing quality goods and ready to expand
 </div>
 
 </div>
-
-
 
 </section>
 
@@ -680,6 +681,48 @@ No. Buyer relationships always belong to you.
 <a href="#top" class="scroll-top">
 <i class="fa-solid fa-arrow-up"></i>
 </a>
+
+<!-- ENQUIRY MODAL -->
+<div id="enquiryModal" class="enquiry-modal">
+
+  <div class="enquiry-box">
+
+    <button class="enquiry-close" onclick="closeEnquiry()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div id="formArea">
+
+      <h3>Start Global Market Access</h3>
+      <p>Tell us about your business and goals.</p>
+
+      <form id="enquiryForm">
+
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="text" name="company" placeholder="Company Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="text" name="phone" placeholder="Phone / WhatsApp">
+
+        <textarea name="message" placeholder="Tell us what you need" rows="4"></textarea>
+
+        <button type="submit" class="btn-primary full-btn">
+          Submit Enquiry
+        </button>
+
+      </form>
+
+    </div>
+
+    <div id="successArea" style="display:none;">
+
+      <h3>Thank You</h3>
+      <p>Your enquiry has been received. We’ll contact you shortly.</p>
+
+    </div>
+
+  </div>
+
+</div>
 
 </body>
 </html>
