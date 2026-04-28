@@ -1836,7 +1836,10 @@ line-height:1.65;
 /* =========================
 TRUST
 ========================= */
-
+#trust{
+padding-top:42px;
+padding-bottom:42px;
+}
 .trust-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
