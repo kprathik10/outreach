@@ -1,0 +1,19 @@
+{
+  "name": "outreach",
+  "version": "1.0.0",
+  "description": "Global Market Access Platform for Manufacturers",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build step required for static site'",
+    "lint": "echo 'No linting configured'"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.12"
+  },
+  "keywords": [
+    "outreach",
+    "manufacturing",
+    "export"
+  ],
+  "license": "MIT"
+}
