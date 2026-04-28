@@ -79,6 +79,63 @@ margin:0;
 white-space:nowrap;
 }
 
+.filter-row input{
+width:100%;
+padding:8px 10px;
+font-size:12px;
+border:1px solid #ddd;
+border-radius:8px;
+margin:0;
+}
+
+.filter-row th{
+background:#fff;
+padding:8px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:18px;
+font-size:14px;
+table-layout:fixed;
+}
+
+.main-head th{
+background:#f3f3f3;
+cursor:pointer;
+position:sticky;
+top:0;
+z-index:2;
+user-select:none;
+}
+
+.main-head th:hover{
+background:#ececec;
+}
+
+th,td{
+padding:10px;
+border:1px solid #ececec;
+text-align:left;
+vertical-align:top;
+word-break:break-word;
+}
+
+.filter-row th{
+padding:6px;
+background:#fafafa;
+}
+
+.filter-row input{
+width:100%;
+padding:7px 8px;
+font-size:12px;
+border:1px solid #ddd;
+border-radius:6px;
+margin:0;
+}
+
 </style>
 </head>
 
@@ -103,14 +160,25 @@ white-space:nowrap;
 
 <table id="dataTable">
 <thead>
-<tr>
-<th>Date</th>
-<th>Name</th>
-<th>Company</th>
-<th>Email</th>
-<th>Phone</th>
-<th>Message</th>
+
+<tr class="main-head">
+<th onclick="sortTable(0)">Date ⇅</th>
+<th onclick="sortTable(1)">Name ⇅</th>
+<th onclick="sortTable(2)">Company ⇅</th>
+<th onclick="sortTable(3)">Email ⇅</th>
+<th onclick="sortTable(4)">Phone ⇅</th>
+<th onclick="sortTable(5)">Message ⇅</th>
 </tr>
+
+<tr class="filter-row">
+<th><input onkeyup="filterTable()" data-col="0" placeholder="Filter"></th>
+<th><input onkeyup="filterTable()" data-col="1" placeholder="Filter"></th>
+<th><input onkeyup="filterTable()" data-col="2" placeholder="Filter"></th>
+<th><input onkeyup="filterTable()" data-col="3" placeholder="Filter"></th>
+<th><input onkeyup="filterTable()" data-col="4" placeholder="Filter"></th>
+<th><input onkeyup="filterTable()" data-col="5" placeholder="Filter"></th>
+</tr>
+
 </thead>
 <tbody></tbody>
 </table>
@@ -133,52 +201,51 @@ alert("Wrong passcode");
 }
 }
 
-function loadData(){
+let cachedRows = [];
 
+function loadData(){
+    
+document.querySelector("#dataTable tbody").innerHTML =
+"<tr><td colspan='6'>Loading...</td></tr>";
+    
 fetch(API)
 .then(r => r.json())
 .then(rows => {
 
-rows.reverse();
+cachedRows = rows.reverse();
 
-const body = document.querySelector("#dataTable tbody");
-
-rows.forEach(row => {
-
-body.innerHTML += `
-<tr>
-<td>${row[0]}</td>
-<td>${row[1]}</td>
-<td>${row[2]}</td>
-<td>${row[3]}</td>
-<td>${row[4]}</td>
-<td>${row[5]}</td>
-</tr>
-`;
-
-});
+renderRows(cachedRows);
 
 });
 
 }
-function filterRows(){
+function filterTable(){
 
-const val = document
-.getElementById("searchBox")
-.value
-.toLowerCase();
+const filters = document.querySelectorAll(".filter-row input");
 
-const rows = document.querySelectorAll("#dataTable tbody tr");
+const filtered = cachedRows.filter(row => {
 
-rows.forEach(row => {
+for(let i=0;i<filters.length;i++){
 
-const text = row.innerText.toLowerCase();
+const val = filters[i].value.toLowerCase().trim();
 
-row.style.display = text.includes(val)
-? ""
-: "none";
+if(val){
+
+const cell = (row[i] || "").toString().toLowerCase();
+
+if(!cell.includes(val)){
+return false;
+}
+
+}
+
+}
+
+return true;
 
 });
+
+renderRows(filtered);
 
 }
 
@@ -216,7 +283,53 @@ a.click();
 
 window.URL.revokeObjectURL(url);
 
-}z
+}
+
+function renderRows(rows){
+
+const body = document.querySelector("#dataTable tbody");
+
+let html = "";
+
+rows.forEach(row => {
+
+html += `
+<tr>
+<td>${row[0] || ""}</td>
+<td>${row[1] || ""}</td>
+<td>${row[2] || ""}</td>
+<td>${row[3] || ""}</td>
+<td>${row[4] || ""}</td>
+<td>${row[5] || ""}</td>
+</tr>
+`;
+
+});
+
+body.innerHTML = html;
+
+}
+
+let sortDirection = {};
+
+function sortTable(col){
+
+sortDirection[col] = !sortDirection[col];
+
+cachedRows.sort((a,b)=>{
+
+let x = (a[col] || "").toString().toLowerCase();
+let y = (b[col] || "").toString().toLowerCase();
+
+if(x < y) return sortDirection[col] ? -1 : 1;
+if(x > y) return sortDirection[col] ? 1 : -1;
+return 0;
+
+});
+
+renderRows(cachedRows);
+
+}
 </script>
 
 </body>
