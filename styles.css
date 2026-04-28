@@ -176,6 +176,23 @@ box-shadow:0 10px 24px rgba(227,90,26,.18);
 transform:translateY(-2px);
 }
 
+/* CTA OUTLINE BUTTON */
+
+.cta-outline{
+background:transparent !important;
+color:var(--brand) !important;
+border:2px solid var(--brand);
+box-shadow:none;
+transition:all .28s ease;
+}
+
+.cta-outline:hover{
+background:var(--brand) !important;
+color:#ffffff !important;
+transform:translateY(-2px);
+box-shadow:0 14px 28px rgba(227,90,26,.18);
+}
+
 .btn-secondary{
 background:#fff;
 border:1px solid rgba(0,0,0,.1);
