@@ -61,6 +61,24 @@ background:#fafafa;
 .hidden{
 display:none;
 }
+
+.top-tools{
+display:flex;
+gap:12px;
+margin:18px 0 12px;
+flex-wrap:wrap;
+}
+
+.top-tools input{
+flex:1;
+min-width:260px;
+margin:0;
+}
+
+.top-tools button{
+white-space:nowrap;
+}
+
 </style>
 </head>
 
@@ -74,6 +92,14 @@ display:none;
 
 <div class="dashboard hidden" id="dashboard">
 <h2>Enquiries Dashboard</h2>
+
+<div class="top-tools">
+
+<input type="text" id="searchBox" placeholder="Search enquiries..." onkeyup="filterRows()">
+
+<button onclick="exportCSV()">Export CSV</button>
+
+</div>
 
 <table id="dataTable">
 <thead>
@@ -135,6 +161,62 @@ body.innerHTML += `
 });
 
 }
+function filterRows(){
+
+const val = document
+.getElementById("searchBox")
+.value
+.toLowerCase();
+
+const rows = document.querySelectorAll("#dataTable tbody tr");
+
+rows.forEach(row => {
+
+const text = row.innerText.toLowerCase();
+
+row.style.display = text.includes(val)
+? ""
+: "none";
+
+});
+
+}
+
+function exportCSV(){
+
+let csv = [];
+
+const rows = document.querySelectorAll("#dataTable tr");
+
+rows.forEach(row => {
+
+let cols = row.querySelectorAll("th, td");
+let data = [];
+
+cols.forEach(col => {
+data.push('"' + col.innerText.replace(/"/g,'""') + '"');
+});
+
+csv.push(data.join(","));
+
+});
+
+const blob = new Blob(
+[csv.join("\n")],
+{ type:"text/csv" }
+);
+
+const url = window.URL.createObjectURL(blob);
+
+const a = document.createElement("a");
+
+a.href = url;
+a.download = "enquiries.csv";
+a.click();
+
+window.URL.revokeObjectURL(url);
+
+}z
 </script>
 
 </body>
