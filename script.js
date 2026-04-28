@@ -249,7 +249,7 @@ e.preventDefault();
 
 const form = new FormData(this);
 
-fetch("https://script.google.com/macros/s/AKfycbyD1LX_06HnhanfrZq0GwAi9cr46bTo6slvFP2VkHiM_x6ycz5pcXMNDNNAqs7SDrw9/exec", {
+fetch("https://script.google.com/macros/s/AKfycbyfZPVkYcF8GAvQnV4cBrToJTvzmOOgteOjSNm2Aqpj2YrFECcaLu0N7HoIWmVPlIgk/exec", {
 method:"POST",
 body:form
 })
